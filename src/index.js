@@ -5,11 +5,12 @@ import App from './App';
 import {BrowserRouter as Router} from "react-router-dom";
 import store from "./redux/redux-store";
 import reportWebVitals from "./reportWebVitals";
-import {Provider} from "./StoreContext";
+import {Provider} from "react-redux";
 
 
 
-let rerender = (state) => {
+
+let rerender = () => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
