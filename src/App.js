@@ -20,10 +20,10 @@ const App = (props) => {
                 <div className="col-10">
                     <Switch>
                         <Route exact path={"/"} component={() =>
-                            <Profile store={props.store}/>}
+                            <Profile/>}
                         />
                         <Route path={"/dialogs"} component={() =>
-                            <DialogsContainer store={props.store}/>}
+                            <DialogsContainer/>}
                         />
 
                         {/*<Route exact path={"/"} component={Profile}/>*/}
