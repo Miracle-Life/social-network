@@ -6,37 +6,35 @@ import {Route, Switch} from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
 import Header from "./component/Header/Header";
 import Profile from "./component/Profile/Profile";
-import Dialogs from "./component/Dialogs/Dialogs";
 
-function App({state,dispatch}) {
+import DialogsContainer from "./component/Dialogs/DialogsContainer";
 
+const App = (props) => {
     return (
-            <div className="container-fluid">
-                <Header/>
-                <div className="row">
-                    <div className="col-2">
-                        <Navbar/>
-                    </div>
-                    <div className="col-10">
-                        <Switch>
-                            <Route exact path={"/"} component={()=><Profile
-                                dispatch={dispatch}
+        <div className="container-fluid">
+            <Header/>
+            <div className="row">
+                <div className="col-2">
+                    <Navbar/>
+                </div>
+                <div className="col-10">
+                    <Switch>
+                        <Route exact path={"/"} component={() =>
+                            <Profile store={props.store}/>}
+                        />
+                        <Route path={"/dialogs"} component={() =>
+                            <DialogsContainer store={props.store}/>}
+                        />
 
-                                newPostText={state.profilePage.newPostText}
-                                postData={state.profilePage.postData}/>}/>
-                            <Route path={"/dialogs"} component={()=> <Dialogs
-                                dialogsData={state.messagePage.dialogsData}
-                                messageData={state.messagePage.messageData}/>}/>
+                        {/*<Route exact path={"/"} component={Profile}/>*/}
+                        {/*<Route path={"/dialogs"} component={Dialogs}/>*/}
 
-                            {/*<Route exact path={"/"} component={Profile}/>*/}
-                            {/*<Route path={"/dialogs"} component={Dialogs}/>*/}
-
-                            {/*<Route exact path={"/"} render={() => <Profile postData={postData}/>}/>*/}
-                            {/*<Route exact path={"/dialogs"} render={() => <Dialogs dialogsData={dialogsData} messageData={messageData}/>}/>*/}
-                        </Switch>
-                    </div>
+                        {/*<Route exact path={"/"} render={() => <Profile postData={postData}/>}/>*/}
+                        {/*<Route exact path={"/dialogs"} render={() => <Dialogs dialogsData={dialogsData} messageData={messageData}/>}/>*/}
+                    </Switch>
                 </div>
             </div>
+        </div>
 
     );
 }

@@ -1,18 +1,25 @@
 import React from 'react';
 import DialogItems from "./DialogItems/DialogItems";
-// import {Route, Switch} from "react-router-dom";
 import {Message} from "./Message/Message";
 
+const Dialogs = (props) => {
+    let state = props.message
+    const onSendMessage = () => {
+        props.sendMessageCreator()
 
-const Dialogs = ({messageData, dialogsData}) => {
+    }
+    const onNewMessageText = (event) => {
+        let body = event.target.value
+        props.updateMessageBodyCreator(body)
+    }
 
-
-    let dialogsElements = dialogsData.map(user => (
+    let dialogsElements = state.dialogsData.map(user => (
         <DialogItems key={user.id} name={user.name} id={user.id}/>
     ))
-    let messageElements = messageData.map(mes => (
+    let messageElements = state.messageData.map(mes => (
         <Message key={mes.id} message={mes.message} id={mes.id}/>
     ))
+    let newMessageText = state.newMessageText
 
     return (
         <div>
@@ -22,7 +29,17 @@ const Dialogs = ({messageData, dialogsData}) => {
                     {dialogsElements}
                 </div>
                 <div className="col-10">
-                    {messageElements}
+                    <div>{messageElements}</div>
+                    <div>
+                        <div><textarea
+                            onChange={onNewMessageText}
+                            defaultValue={newMessageText}
+                            placeholder='Enter you message'/></div>
+                        <div>
+                            <button onClick={onSendMessage}>Send
+                            </button>
+                        </div>
+                    </div>
 
                     {/*<Switch>*/}
                     {/*    <Route exact path={"/dialogs/1"} component={Message}/>*/}
