@@ -7,7 +7,9 @@ const MyPosts = (props) => {
     let postElements = props.postData.map(post => (
         <Post key={post.id} message={post.title} likesCount={post.likes}/>
     ))
+
     const newPostElements = React.createRef()
+
     const addPost = () => {
         props.addPost()
     }
@@ -21,7 +23,7 @@ const MyPosts = (props) => {
             <div>
                 <div className="form-floating">
                     <textarea
-                        defaultValue={props.newPostText}
+                        value={props.newPostText}
                         onChange={onPostChange}
                         ref={newPostElements}
                         className="form-control"

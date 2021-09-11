@@ -3,10 +3,11 @@ import DialogItems from "./DialogItems/DialogItems";
 import {Message} from "./Message/Message";
 
 const Dialogs = (props) => {
+
     let state = props.message
+
     const onSendMessage = () => {
         props.sendMessageCreator()
-
     }
     const onNewMessageText = (event) => {
         let body = event.target.value
@@ -19,7 +20,8 @@ const Dialogs = (props) => {
     let messageElements = state.messageData.map(mes => (
         <Message key={mes.id} message={mes.message} id={mes.id}/>
     ))
-    let newMessageText = state.newMessageText
+    let newMessageText = state.newMessageText;
+
 
     return (
         <div>
@@ -33,7 +35,7 @@ const Dialogs = (props) => {
                     <div>
                         <div><textarea
                             onChange={onNewMessageText}
-                            defaultValue={newMessageText}
+                            value={newMessageText}
                             placeholder='Enter you message'/></div>
                         <div>
                             <button onClick={onSendMessage}>Send
