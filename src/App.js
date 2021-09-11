@@ -26,11 +26,6 @@ const App = (props) => {
                             <DialogsContainer/>}
                         />
 
-                        {/*<Route exact path={"/"} component={Profile}/>*/}
-                        {/*<Route path={"/dialogs"} component={Dialogs}/>*/}
-
-                        {/*<Route exact path={"/"} render={() => <Profile postData={postData}/>}/>*/}
-                        {/*<Route exact path={"/dialogs"} render={() => <Dialogs dialogsData={dialogsData} messageData={messageData}/>}/>*/}
                     </Switch>
                 </div>
             </div>
