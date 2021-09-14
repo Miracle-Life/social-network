@@ -1,23 +1,25 @@
-import React from 'react';
-import styles from './users.module.css';
+import React, {useEffect} from 'react';
 import axios from "axios";
 import img from '../../assets/images/img1.jpg'
 
 const Users = (props) => {
-    if (props.users.length === 0) {
+
+    let getUsers = () => {
         axios.get('https://social-network.samuraijs.com/api/1.0//users')
             .then(res => {
                 props.setUsers(
                     res.data.items
                 )
             })
-
-
+        console.log('ddd')
     }
-
+    useEffect(()=>{
+        getUsers()
+    },[])
 
     return (
         <div>
+            {/*<button className="btn btn-primary" onClick={getUsers}>Get Users</button>*/}
             {props.users.map((user) => (
                 <div key={user.id} className='container'>
                     <div className="card border-dark m-3" style={{maxWidth: "560px"}}>
