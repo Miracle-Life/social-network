@@ -8,6 +8,7 @@ import Header from "./component/Header/Header";
 import Profile from "./component/Profile/Profile";
 
 import DialogsContainer from "./component/Dialogs/DialogsContainer";
+import UsersContainer from "./component/Users/UsersContainer";
 
 const App = (props) => {
     return (
@@ -25,6 +26,8 @@ const App = (props) => {
                         <Route path={"/dialogs"} component={() =>
                             <DialogsContainer/>}
                         />
+                        <Route path='/users'
+                               component={ () => <UsersContainer/> }/>
 
                     </Switch>
                 </div>
