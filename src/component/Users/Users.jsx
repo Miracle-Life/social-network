@@ -1,5 +1,4 @@
 import React from 'react';
-import style from "./users.module.css";
 import img from "../../assets/images/img1.jpg";
 
 const Users = (props) => {
@@ -9,20 +8,26 @@ const Users = (props) => {
         pages.push(i)
     }
     return (
-        <div>
+        <div className="container">
 
-            <div>
-                {pages.map(page => (
-                    <span key={page}
-                          onClick={() => {
-                              props.onPageChange(page)
-                          }}
-                          className={props.currentPage === page && style.selectedPage}>{page}</span>
-                ))}
-            </div>
+            <nav className="d-flex p-3 align-items-center" aria-label="Page navigation">
+                <ul className="pagination pagination-sm">
+                    {pages.map(page => (
+                        <li className={`page-item ${props.currentPage === page && "active"}`}
+                            aria-current="page">
+                                <span key={page}
+                                      onClick={() => {
+                                          props.onPageChange(page)
+                                      }}
+                                      className="page-link">{page}</span>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+
 
             {props.users.map((user) => (
-                <div key={user.id} className='container'>
+                <div key={user.id} className='d-flex p-3 align-items-center'>
                     <div className="card border-dark m-3" style={{maxWidth: "560px"}}>
                         <div className="row g-4">
                             <div className="col-md-4">
