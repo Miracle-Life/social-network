@@ -1,25 +1,26 @@
-import React, {useEffect} from 'react';
-import axios from "axios";
-import img from '../../assets/images/img1.jpg'
+import React from 'react';
+import style from "./users.module.css";
+import img from "../../assets/images/img1.jpg";
 
 const Users = (props) => {
-
-    let getUsers = () => {
-        axios.get('https://social-network.samuraijs.com/api/1.0//users')
-            .then(res => {
-                props.setUsers(
-                    res.data.items
-                )
-            })
-        console.log('ddd')
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages = []
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
-    useEffect(()=>{
-        getUsers()
-    },[])
-
     return (
         <div>
-            {/*<button className="btn btn-primary" onClick={getUsers}>Get Users</button>*/}
+
+            <div>
+                {pages.map(page => (
+                    <span key={page}
+                          onClick={() => {
+                              props.onPageChange(page)
+                          }}
+                          className={props.currentPage === page && style.selectedPage}>{page}</span>
+                ))}
+            </div>
+
             {props.users.map((user) => (
                 <div key={user.id} className='container'>
                     <div className="card border-dark m-3" style={{maxWidth: "560px"}}>
@@ -56,7 +57,7 @@ const Users = (props) => {
                 </div>
             ))}
         </div>
-    )
-}
+    );
+};
 
 export default Users;
