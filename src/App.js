@@ -5,10 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Route, Switch} from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
 import Header from "./component/Header/Header";
-import Profile from "./component/Profile/Profile";
 
 import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
+import ProfileContainer from "./component/Profile/ProfileContainer";
 
 const App = (props) => {
     return (
@@ -20,14 +20,14 @@ const App = (props) => {
                 </div>
                 <div className="col-10">
                     <Switch>
-                        <Route exact path={"/"} component={() =>
-                            <Profile/>}
+                        <Route path={"/profile"} component={() =>
+                            <ProfileContainer/>}
                         />
                         <Route path={"/dialogs"} component={() =>
                             <DialogsContainer/>}
                         />
-                        <Route path='/users'
-                               component={ () => <UsersContainer/> }/>
+                        <Route path={"/users"}
+                               component={() => <UsersContainer/>}/>
 
                     </Switch>
                 </div>

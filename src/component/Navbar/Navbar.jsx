@@ -7,7 +7,7 @@ const Navbar = () => {
                 <nav className="navbar navbar-nav navbar-dark bg-dark flex-column">
                     <div className="justify-content-center">
                         <nav className="navbar-nav justify-content-center">
-                            <NavLink className="nav-link" exact to="/">Profile</NavLink>
+                            <NavLink className="nav-link" exact to="/profile">Profile</NavLink>
                             <NavLink className="nav-link" to="/dialogs">Message</NavLink>
                             <NavLink className="nav-link" to="/favorite">News</NavLink>
                             <NavLink className="nav-link" to="/disfavoured">Music</NavLink>

@@ -12,7 +12,7 @@ class UsersContainer extends React.Component {
 
         setTimeout(() => {
             this.props.toggleIsFetching(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0//users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
                 .then(res => {
                     this.props.setUsers(res.data.items)
                     this.props.toggleIsFetching(false)
@@ -23,7 +23,7 @@ class UsersContainer extends React.Component {
     onPageChange = (pageNumber) => {
         this.props.toggleIsFetching(true)
         this.props.setPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0//users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(res => {
                 this.props.setUsers(res.data.items)
                 this.props.toggleIsFetching(false)

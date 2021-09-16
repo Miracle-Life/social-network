@@ -1,5 +1,6 @@
 import React from 'react';
 import img from "../../assets/images/img1.jpg";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -13,12 +14,11 @@ const Users = (props) => {
             <nav className="d-flex p-3 align-items-center" aria-label="Page navigation">
                 <ul className="pagination pagination-sm">
                     {pages.map(page => (
-                        <li className={`page-item ${props.currentPage === page && "active"}`}
+                        <li key={page} className={`page-item ${props.currentPage === page && "active"}`}
                             aria-current="page">
-                                <span key={page}
-                                      onClick={() => {
-                                          props.onPageChange(page)
-                                      }}
+                                <span onClick={() => {
+                                    props.onPageChange(page)
+                                }}
                                       className="page-link">{page}</span>
                         </li>
                     ))}
@@ -31,8 +31,11 @@ const Users = (props) => {
                     <div className="card border-dark m-3" style={{maxWidth: "560px"}}>
                         <div className="row g-4">
                             <div className="col-md-4">
-                                <img src={user.photos.small !== null ? user.photos.small : img}
-                                     className="img-fluid rounded-start" alt="..."/>
+                                <NavLink to={'/profile/' + user.id}>
+                                    <img src={user.photos.small !== null ? user.photos.small : img}
+                                         className="img-fluid rounded-start" alt="..."/>
+                                </NavLink>
+
                             </div>
                             <div className="col-md-8 mb-2">
                                 <div className="card-body ">
