@@ -1,6 +1,6 @@
 export const ADD_POST = 'ADD-POST';
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SET_USER_PROFILE = 'SET-USER-PROFILE'
+export const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 let profilePage = {
     postData: [

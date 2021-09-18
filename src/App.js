@@ -4,16 +4,15 @@ import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Route, Switch} from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
-import Header from "./component/Header/Header";
-
 import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
 import ProfileContainer from "./component/Profile/ProfileContainer";
+import HeaderContainer from "./component/Header/HeaderContainer";
 
 const App = (props) => {
     return (
         <div className="container-fluid">
-            <Header/>
+            <HeaderContainer/>
             <div className="row">
                 <div className="col-2">
                     <Navbar/>
