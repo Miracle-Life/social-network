@@ -20,7 +20,7 @@ const App = (props) => {
                 </div>
                 <div className="col-10">
                     <Switch>
-                        <Route path={"/profile"} component={() =>
+                        <Route path={"/profile/:userId?"} component={() =>
                             <ProfileContainer/>}
                         />
                         <Route path={"/dialogs"} component={() =>
