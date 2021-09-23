@@ -23,45 +23,43 @@ const ProfileInfo = (props) => {
                             <img src={props.profile.photos.large !== null ? props.profile.photos.large : img}
                                  className="card-img-top" alt="..."/>
                             <div className="card-body">
-                                <h5 className="card-title"><h3> {props.profile.fullName}</h3></h5>
+                                <h5 className="card-title"> {props.profile.fullName}</h5>
                             </div>
 
                         </div>
                     </div>
                     <div className="col-7">
-
-                        <h4>Info</h4>
-                        <p className="card-text"> <h5>About Me:</h5> {props.profile.aboutMe}</p>
-                        <p>
+                        Info
+                        <div className="card-text"> About Me: {props.profile.aboutMe}</div>
+                        <div>
                             {props.profile.lookingForAJobDescription}
-                        </p>
-                        <p className="card-text"> <h5>About Me:</h5> {props.profile.status}</p>
+                        </div>
+                        <p className="card-text"> Me Status:{props.profile.status}</p>
                         <div className='justify-content-between'>
-                            <h4>
                                 Contacts
-                            </h4>
-
-                            <Link to={{pathname: `https://${props.profile.contacts.facebook}`}} target="_blank">
-                                <img src={fb} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
-                            <Link to={{pathname: `https://${props.profile.contacts.website}`}} target="_blank">
-                                <img src={website} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
-                            <Link to={{pathname: `https://${props.profile.contacts.vk}`}} target="_blank">
-                                <img src={vk} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
-                            <Link to={{pathname: `https://${props.profile.contacts.twitter}`}} target="_blank">
-                                <img src={twitter} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
-                            <Link to={{pathname: `https://${props.profile.contacts.instagram}`}} target="_blank">
-                                <img src={instagram} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
-                            <Link to={{pathname: `https://${props.profile.contacts.youtube}`}} target="_blank">
-                                <img src={youtube} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
-                            <Link to={{pathname: `https://${props.profile.contacts.github}`}} target="_blank">
-                                <img src={github} style={{width: '40px', height: '40px'}} alt=""/>
-                            </Link>
+                            <div>
+                                <Link to={{pathname: `https://${props.profile.contacts.facebook}`}} target="_blank">
+                                    <img src={fb} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                                <Link to={{pathname: `https://${props.profile.contacts.website}`}} target="_blank">
+                                    <img src={website} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                                <Link to={{pathname: `https://${props.profile.contacts.vk}`}} target="_blank">
+                                    <img src={vk} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                                <Link to={{pathname: `https://${props.profile.contacts.twitter}`}} target="_blank">
+                                    <img src={twitter} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                                <Link to={{pathname: `https://${props.profile.contacts.instagram}`}} target="_blank">
+                                    <img src={instagram} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                                <Link to={{pathname: `https://${props.profile.contacts.youtube}`}} target="_blank">
+                                    <img src={youtube} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                                <Link to={{pathname: `https://${props.profile.contacts.github}`}} target="_blank">
+                                    <img src={github} style={{width: '40px', height: '40px'}} alt=""/>
+                                </Link>
+                            </div>
                         </div>
 
 

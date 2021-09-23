@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     message: messageReducer,
     sidebar: sidebarReducer,
     usersPage: usersReducer,
-    auth: authReducer
+    authUser: authReducer
 })
 
 const store = createStore(rootReducer, composeWithDevTools())

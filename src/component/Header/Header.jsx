@@ -3,7 +3,7 @@ import head from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-
+// debugger
     return (
         <div className={`container-fluid bg-dark ${head.header_container}`}>
             <div className="container">
@@ -14,7 +14,8 @@ const Header = (props) => {
                     </NavLink>
                     <div>
                         {props.isAuthenticated ?
-                            props.login :
+                           <div className="navbar-brand">{props.login}</div>
+                            :
                             <NavLink to={'/login'}
                                      className="navbar-brand"
                                      style={{fontFamily: 'Netflix', fontSize: '1rem'}}>

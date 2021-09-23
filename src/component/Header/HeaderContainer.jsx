@@ -12,8 +12,10 @@ class HeaderContainer extends Component {
             {withCredentials: true})
             .then(res => {
                 if (res.data.resultCode === 0) {
-                    let {id, email, login} = res.data.data
-                    setAuthUserData(id, email, login)
+                    this.props.setAuthUserData(
+                        res.data.data.email,
+                        res.data.data.id,
+                        res.data.data.login)
                 }
             })
     }
@@ -26,8 +28,8 @@ class HeaderContainer extends Component {
 }
 
 let mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    login: state.auth.login
+    isAuthenticated: state.authUser.isAuthenticated,
+    login: state.authUser.login
 })
 
 export default connect(mapStateToProps, {
