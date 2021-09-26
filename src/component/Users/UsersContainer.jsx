@@ -9,7 +9,6 @@ import {
     setPage,
     toggleInProgress,
 } from "../../redux/users.reducer";
-import {usersAPI} from "../../api/api";
 
 
 
