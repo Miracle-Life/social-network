@@ -1,10 +1,11 @@
-import {combineReducers, createStore} from 'redux'
+import {applyMiddleware, combineReducers, createStore} from 'redux'
 import profileReducer from "./profile.reducer";
 import messageReducer from "./message.reducer";
 import sidebarReducer from "./sidebar.reducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import usersReducer from "./users.reducer";
 import authReducer from "./auth.reducer";
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
     proFile: profileReducer,
@@ -14,7 +15,7 @@ const rootReducer = combineReducers({
     authUser: authReducer
 })
 
-const store = createStore(rootReducer, composeWithDevTools())
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 // window.store = store
 
