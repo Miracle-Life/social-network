@@ -8,6 +8,7 @@ import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
 import ProfileContainer from "./component/Profile/ProfileContainer";
 import HeaderContainer from "./component/Header/HeaderContainer";
+import LoginPage from "./component/Login/Login";
 
 const App = (props) => {
     return (
@@ -27,6 +28,8 @@ const App = (props) => {
                         />
                         <Route path={"/users"}
                                component={() => <UsersContainer/>}/>
+                        <Route path={"/login"}
+                               component={() => <LoginPage/>}/>
 
                     </Switch>
                 </div>

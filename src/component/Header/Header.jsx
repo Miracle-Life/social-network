@@ -3,7 +3,7 @@ import head from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-// debugger
+
     return (
         <div className={`container-fluid bg-dark ${head.header_container}`}>
             <div className="container">
