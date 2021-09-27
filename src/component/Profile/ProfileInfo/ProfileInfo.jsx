@@ -9,6 +9,7 @@ import twitter from "../../../assets/icon-social/twitter.png"
 import instagram from "../../../assets/icon-social/instagram.png"
 import youtube from "../../../assets/icon-social/youtube.png"
 import github from "../../../assets/icon-social/github.png"
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
 
@@ -35,6 +36,7 @@ const ProfileInfo = (props) => {
                             {props.profile.lookingForAJobDescription}
                         </div>
                         <p className="card-text"> Me Status:{props.profile.status}</p>
+                        <ProfileStatus status={'Hello it is my Status'}/>
                         <div className='justify-content-between'>
                                 Contacts
                             <div>
