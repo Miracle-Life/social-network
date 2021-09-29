@@ -1,26 +1,37 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const ProfileStatus = (props) => {
     const [editMode, setEditMode] = useState(false)
+    // debugger
+    const [status, setStatus] = useState(props.status)
 
     const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
         setEditMode(false)
+        props.updateUserStatus(status)
     }
-    if(props.status===null){
-        props.status='Здесь должен быть статус'
+    const onStatusChange = (e) => {
+        setStatus(e.currentTarget.value)
     }
+
+    useEffect(()=>{
+        setStatus(props.status)
+    },[props.status])
+
     return (
         <>
             {!editMode ?
                 <div>
-                    <span onDoubleClick={activateEditMode}>{props.status}</span>
+                    <span onDoubleClick={activateEditMode}>Status: {status || '-----'}</span>
                 </div>
                 :
                 <div>
-                    <input autoFocus={true} onBlur={deactivateEditMode} value={props.status}/>
+                    <input onChange={onStatusChange}
+                           autoFocus={true}
+                           onBlur={deactivateEditMode}
+                           value={status}/>
                 </div>
             }
         </>

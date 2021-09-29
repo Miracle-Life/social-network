@@ -35,8 +35,8 @@ const ProfileInfo = (props) => {
                         <div>
                             {props.profile.lookingForAJobDescription}
                         </div>
-                        <p className="card-text"> Me Status:{props.profile.status}</p>
-                        <ProfileStatus status={'Hello it is my Status'}/>
+                        {/*<p className="card-text"> Me Status:{props.profile.status}</p>*/}
+                        <ProfileStatus updateUserStatus={props.updateUserStatus} status={props.status}/>
                         <div className='justify-content-between'>
                                 Contacts
                             <div>

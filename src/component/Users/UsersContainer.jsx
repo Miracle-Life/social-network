@@ -10,7 +10,7 @@ import {
     toggleInProgress,
 } from "../../redux/users.reducer";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+// import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class UsersContainer extends React.Component {

@@ -12,10 +12,6 @@ export const usersAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(res => res.data)
     },
-    getProfileUser(userId) {
-        return instance.get(`/profile/${userId}`)
-            .then(res => res.data)
-    },
     setFollow(userId) {
         return instance.post(`follow/${userId}`, {})
             .then(res => res.data)
@@ -24,13 +20,29 @@ export const usersAPI = {
         return instance.delete(`follow/${userId}`)
             .then(res => res.data)
     },
-    getAuthAPI() {
+}
+export const authAPI = {
+    me() {
         return instance.get(`auth/me`)
             .then(res => res.data)
     }
 }
+// debugger
+export const profileAPI = {
+    getProfileUser(userId) {
+        return instance.get(`/profile/${userId}`)
+            .then(res => res.data)
+    },
+    getUserStatus(userId){
+        return instance.get(`/profile/status/${userId}`)
+            .then(res => res.data)
+    },
 
-
+    updateUserStatus(status){
+        return instance.put(`/profile/status`,{status:status})
+            .then(res => res.data)
+    }
+}
 
 
 
