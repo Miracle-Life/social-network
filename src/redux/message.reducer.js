@@ -1,4 +1,3 @@
-export const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT"
 export const SEND_MESSAGE = "SEND_MESSAGE"
 
 let messagePage = {
@@ -16,19 +15,15 @@ let messagePage = {
         {name: "Andrey", id: 4},
         {name: "Ihor", id: 5},
     ],
-    newMessageText: ""
 }
 
 const messageReducer = (state = messagePage, action) => {
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {...state, newMessageText: action.body}
         case SEND_MESSAGE:
-            let body = state.newMessageText;
+            let body = action.newMessageText;
             return {
                 ...state,
-                newMessageText: "",
                 messageData: [...state.messageData, {id: 9, message: body}],
             }
         default:
@@ -37,12 +32,6 @@ const messageReducer = (state = messagePage, action) => {
 }
 
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE,})
-export const updateMessageBodyCreator = (newMessage) => (
-    {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        body: newMessage,
-    }
-)
+export const sendMessageCreator = (newMessageText) => ({type: SEND_MESSAGE,newMessageText})
 
 export default messageReducer

@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from "./Post/Post";
+import AddPostForm from "./MyPostForm";
 
 
 const MyPosts = (props) => {
@@ -8,30 +9,14 @@ const MyPosts = (props) => {
         <Post key={post.id} message={post.title} likesCount={post.likes}/>
     ))
 
-    const newPostElements = React.createRef()
-
-    const addPost = () => {
-        props.addPost()
-    }
-    const onPostChange = () => {
-        const text = newPostElements.current.value
-        props.addUpdateNewPost(text)
+    const addNewPost = (value) => {
+        props.addPost(value.myNewPost)
     }
     return (
         <div>
             My Posts
             <div>
-                <div className="form-floating">
-                    <textarea
-                        value={props.newPostText}
-                        onChange={onPostChange}
-                        ref={newPostElements}
-                        className="form-control"
-                        style={{height: "100px"}}
-                    />
-                </div>
-                <button className="btn btn-success m-2" onClick={addPost}> Add post
-                </button>
+                <AddPostForm onSubmit={addNewPost}/>
                 <div className='card-content'>
                     {postElements}
                 </div>

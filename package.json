@@ -29,6 +29,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "redux-form": "^8.3.7",
     "styled-components": "^5.3.1",
     "web-vitals": "^2.1.0"
   },

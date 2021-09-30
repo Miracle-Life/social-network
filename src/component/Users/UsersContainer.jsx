@@ -10,6 +10,7 @@ import {
     toggleInProgress,
 } from "../../redux/users.reducer";
 import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 // import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
@@ -65,6 +66,6 @@ let mapStateToProps = (state) => {
 // )(UsersContainer);
 
 export default compose(
-    // withAuthRedirect,
+    withAuthRedirect,
     connect(mapStateToProps, {acceptFollow, acceptUnfollow, setPage, toggleInProgress, getUsers})
 )(UsersContainer)
