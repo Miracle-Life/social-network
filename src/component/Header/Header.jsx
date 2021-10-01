@@ -14,12 +14,25 @@ const Header = (props) => {
                     </NavLink>
                     <div>
                         {props.isAuthenticated ?
-                           <div className="navbar-brand">{props.login}</div>
+                            <div className="d-flex">
+                                <div className="navbar-brand">{props.login}</div>
+                                <form>
+                                    <button
+                                        onClick={props.logout}
+                                        className="btn btn-outline-success"
+                                    >Logout
+                                    </button>
+                                </form>
+                            </div>
                             :
+
                             <NavLink to={'/login'}
-                                     className="navbar-brand"
-                                     style={{fontFamily: 'Netflix', fontSize: '1rem'}}>
-                                Login
+                                     className="d-flex btn btn-outline-success"
+                            >
+
+                                    Login
+
+
                             </NavLink>
                         }
 

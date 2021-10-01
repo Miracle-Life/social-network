@@ -1,17 +1,24 @@
 import React from 'react';
 import LoginReduxForm from "./LoginForm";
+import {connect} from "react-redux";
+import {login, logout} from "../../redux/auth.reducer";
+import {Redirect} from "react-router-dom";
 
 const LoginPage = (props) => {
-    const submit = values => {
-
-        console.log(values)
+    const submit = formData => {
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+    if (props.isAuthenticated) {
+        return <Redirect to={'/profile'}/>
     }
     return (
         <div>
-            <h1> Login</h1>
+            <h1>Login Page</h1>
             <LoginReduxForm onSubmit={submit}/>
         </div>
     );
 };
-
-export default LoginPage;
+const mapStateToProps = (state)=>({
+    isAuthenticated: state.authUser.isAuthenticated
+})
+export default connect(mapStateToProps, {login, logout})(LoginPage)

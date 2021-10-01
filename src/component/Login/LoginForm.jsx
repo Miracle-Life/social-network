@@ -11,9 +11,9 @@ const LoginForm = props => {
             <div className="mb-3">
                 <label className="form-label">Email address</label>
                 <Field
-                    placeholder="login"
+                    placeholder="email"
                     component={Input}
-                    name={'login'}
+                    name={'email'}
                     className='form-control form-control-sm'
                     validate={[required]}
                 />
@@ -25,6 +25,7 @@ const LoginForm = props => {
                     placeholder="password"
                     component={Input}
                     name={'password'}
+                    type="password"
                     className='form-control form-control-sm'
                     validate={[required]}
                 />
