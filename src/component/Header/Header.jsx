@@ -3,7 +3,6 @@ import head from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-
     return (
         <div className={`container-fluid bg-dark ${head.header_container}`}>
             <div className="container">
@@ -29,10 +28,7 @@ const Header = (props) => {
                             <NavLink to={'/login'}
                                      className="d-flex btn btn-outline-success"
                             >
-
-                                    Login
-
-
+                                Login
                             </NavLink>
                         }
 

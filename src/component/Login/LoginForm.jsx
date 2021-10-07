@@ -39,8 +39,15 @@ const LoginForm = props => {
                     type={"checkbox"}
                 /> remember Me
             </div>
+            {props.error &&
+            <div className="form-control is-invalid">
+                {/*Email our Password is wrong*/}
+                {props.error}
+            </div>
+            }
+
             <div>
-                <button className="btn btn-secondary ">Login</button>
+                <button className="btn btn-secondary mt-3">Login</button>
             </div>
         </form>
     );

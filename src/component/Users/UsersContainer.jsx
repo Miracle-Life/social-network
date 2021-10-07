@@ -5,13 +5,20 @@ import Preloader from "../common/Preloader/Preloader";
 import {
     acceptFollow,
     acceptUnfollow,
-    getUsers,
+    requestUsers,
     setPage,
     toggleInProgress,
 } from "../../redux/users.reducer";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-// import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {
+    getCurrentPage,
+    getInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUser
+} from "../../redux/usersSelectors";
+
 
 
 class UsersContainer extends React.Component {
@@ -51,14 +58,26 @@ class UsersContainer extends React.Component {
 let mapStateToProps = (state) => {
 
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        inProgress: state.usersPage.followingInProgress
+        users: getUser(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        inProgress: getInProgress(state)
     }
 }
+
+// let mapStateToProps = (state) => {
+//
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         inProgress: state.usersPage.followingInProgress
+//     }
+// }
 
 
 // export default connect(mapStateToProps,
@@ -66,6 +85,6 @@ let mapStateToProps = (state) => {
 // )(UsersContainer);
 
 export default compose(
-    withAuthRedirect,
-    connect(mapStateToProps, {acceptFollow, acceptUnfollow, setPage, toggleInProgress, getUsers})
+    // withAuthRedirect,
+    connect(mapStateToProps, {acceptFollow, acceptUnfollow, setPage, toggleInProgress, getUsers: requestUsers})
 )(UsersContainer)
