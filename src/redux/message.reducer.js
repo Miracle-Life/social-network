@@ -1,4 +1,4 @@
-export const SEND_MESSAGE = "SEND_MESSAGE"
+export const SEND_MESSAGE = "message/SEND_MESSAGE"
 
 let messagePage = {
     messageData: [

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form'
-import {Input} from "../common/FormsControls/FormsControls";
+import {reduxForm} from 'redux-form'
+import {createField, Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
 
 const LoginForm = props => {
@@ -10,34 +10,18 @@ const LoginForm = props => {
         <form className='col-4 m-auto' onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label className="form-label">Email address</label>
-                <Field
-                    placeholder="email"
-                    component={Input}
-                    name={'email'}
-                    className='form-control form-control-sm'
-                    validate={[required]}
-                />
+                {createField('form-control form-control-sm', "email", 'email', [required], Input, 'text')}
+
                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div>
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <Field
-                    placeholder="password"
-                    component={Input}
-                    name={'password'}
-                    type="password"
-                    className='form-control form-control-sm'
-                    validate={[required]}
-                />
+                {createField('form-control form-control-sm', "password", 'password', [required], Input, 'password')}
                 <div id="emailHelp" className="form-text">We'll never share your password with anyone else.</div>
             </div>
             <div className="mt-3 mb-3 form-check">
-                <Field
-                    component={Input}
-                    name={'rememberMe'}
-                    className="form-check-input"
-                    type={"checkbox"}
-                /> remember Me
+                {createField('form-check-input', '', 'rememberMe', '', Input, 'checkbox')}
+                remember Me
             </div>
             {props.error &&
             <div className="form-control is-invalid">

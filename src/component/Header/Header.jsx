@@ -3,6 +3,12 @@ import head from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
+
+
+
+    const logoutCallback = () => {
+        props.logout()
+    }
     return (
         <div className={`container-fluid bg-dark ${head.header_container}`}>
             <div className="container">
@@ -17,7 +23,7 @@ const Header = (props) => {
                                 <div className="navbar-brand">{props.login}</div>
                                 <form>
                                     <button
-                                        onClick={props.logout}
+                                        onClick={logoutCallback}
                                         className="btn btn-outline-success"
                                     >Logout
                                     </button>

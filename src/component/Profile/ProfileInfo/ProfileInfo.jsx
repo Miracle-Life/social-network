@@ -11,60 +11,60 @@ import youtube from "../../../assets/icon-social/youtube.png"
 import github from "../../../assets/icon-social/github.png"
 import ProfileStatus from './ProfileStatus'
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, updateUserStatus, status}) => {
 
     return (
         <>
-            {!props.profile ?
+            {!profile ?
                 <Preloader/>
                 :
                 <div className="row">
                     <div className="col-5">
                         <div className="card">
-                            <img src={props.profile.photos.large !== null ? props.profile.photos.large : img}
+                            <img src={profile.photos.large !== null ? profile.photos.large : img}
                                  className="card-img-top" alt="..."/>
                             <div className="card-body">
-                                <h5 className="card-title"> {props.profile.fullName}</h5>
+                                <h5 className="card-title"> {profile.fullName}</h5>
                             </div>
 
                         </div>
                     </div>
                     <div className="col-7">
                         Info
-                        <div className="card-text"> About Me: {props.profile.aboutMe}</div>
+                        <div className="card-text"> About Me: {profile.aboutMe}</div>
                         <div>
-                            {props.profile.lookingForAJobDescription}
+                            {profile.lookingForAJobDescription}
                         </div>
-                        {/*<p className="card-text"> Me Status:{props.profile.status}</p>*/}
-                        <ProfileStatus updateUserStatus={props.updateUserStatus} status={props.status}/>
+                        {/*<p className="card-text"> Me Status:{.profile.status}</p>*/}
+                        <ProfileStatus updateUserStatus={updateUserStatus} status={status}/>
                         <div className='justify-content-between'>
-                                Contacts
+                            Contacts
                             <div>
-                                <Link to={{pathname: `https://${props.profile.contacts.facebook}`}} target="_blank">
+                                <Link to={{pathname: `https://${profile.contacts.facebook}`}} target="_blank">
                                     <img src={fb} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
-                                <Link to={{pathname: `https://${props.profile.contacts.website}`}} target="_blank">
+                                <Link to={{pathname: `https://${profile.contacts.website}`}} target="_blank">
                                     <img src={website} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
-                                <Link to={{pathname: `https://${props.profile.contacts.vk}`}} target="_blank">
+                                <Link to={{pathname: `https://${profile.contacts.vk}`}} target="_blank">
                                     <img src={vk} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
-                                <Link to={{pathname: `https://${props.profile.contacts.twitter}`}} target="_blank">
+                                <Link to={{pathname: `https://${profile.contacts.twitter}`}} target="_blank">
                                     <img src={twitter} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
-                                <Link to={{pathname: `https://${props.profile.contacts.instagram}`}} target="_blank">
+                                <Link to={{pathname: `https://${profile.contacts.instagram}`}} target="_blank">
                                     <img src={instagram} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
-                                <Link to={{pathname: `https://${props.profile.contacts.youtube}`}} target="_blank">
+                                <Link
+                                    to={{pathname: `https://${profile.contacts.youtube}`}}
+                                    target="_blank">
                                     <img src={youtube} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
-                                <Link to={{pathname: `https://${props.profile.contacts.github}`}} target="_blank">
+                                <Link to={{pathname: `https://${profile.contacts.github}`}} target="_blank">
                                     <img src={github} style={{width: '40px', height: '40px'}} alt=""/>
                                 </Link>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             }
