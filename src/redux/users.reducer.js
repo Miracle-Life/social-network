@@ -5,14 +5,14 @@ const FOLLOW = 'users/FOLLOW';
 const UNFOLLOW = 'users/UNFOLLOW';
 const SET_USERS = 'users/SET_USERS';
 const SET_CURRENT_PAGE = 'users/SET_CURRENT_PAGE'
-// const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const TOGGLE_IS_FETCHING = 'users/TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'users/TOGGLE_IS_FOLLOWING_PROGRESS'
 
 let initialState = {
     users: [],
-    pageSize: 100,
-    totalUsersCount: 1200,
+    pageSize: 20,
+    totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
     followingInProgress: [],
@@ -49,9 +49,9 @@ const usersReducer = (state = initialState, action) => {
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.pageNumber}
         }
-        // case  SET_TOTAL_USERS_COUNT: {
-        //     return {...state, totalUsersCount: action.count}
-        // }
+        case  SET_TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.count}
+        }
         case TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
         }
@@ -75,7 +75,7 @@ export const acceptFollow = (userId) => ({type: FOLLOW, userId})
 export const acceptUnfollow = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setPage = (pageNumber) => ({type: SET_CURRENT_PAGE, pageNumber})
-// export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
+export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleInProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
 
@@ -86,6 +86,7 @@ export const requestUsers = (page, pageSize) => {
         let data = await usersAPI.getUsers(page, pageSize)
         dispatch(setUsers(data.items))
         dispatch(toggleIsFetching(false))
+        dispatch(setUsersTotalCountAC(data.totalCount))
 
     }
 }

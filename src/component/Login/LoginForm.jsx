@@ -10,13 +10,13 @@ const LoginForm = props => {
         <form className='col-4 m-auto' onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label className="form-label">Email address</label>
-                {createField('form-control form-control-sm', "email", 'email', [required], Input, 'text')}
+                {createField('form-control form-control-sm',"email",'email',[required],Input,'text')}
 
                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div>
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                {createField('form-control form-control-sm', "password", 'password', [required], Input, 'password')}
+                {createField('form-control form-control-sm',"password",'password',[required],Input,'password')}
                 <div id="emailHelp" className="form-text">We'll never share your password with anyone else.</div>
             </div>
             <div className="mt-3 mb-3 form-check">
