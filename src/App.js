@@ -10,7 +10,6 @@ import ProfileContainer from "./component/Profile/ProfileContainer";
 import HeaderContainer from "./component/Header/HeaderContainer";
 import LoginPage from "./component/Login/Login";
 import {connect} from "react-redux";
-import {getAuthUserData} from "./redux/auth.reducer";
 import {compose} from "redux";
 import {initializedApp} from "./redux/app.reducer";
 import Preloader from "./component/common/Preloader/Preloader";
