@@ -2,6 +2,7 @@
   "name": "social-network",
   "version": "0.1.0",
   "author": "Denys Bielov",
+  "homepage": "https://miracle-life.github.io/testing/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -12,6 +13,7 @@
     "bootstrap": "^5.1.1",
     "classnames": "^2.3.1",
     "firebase": "^9.1.0",
+    "gh-pages": "^3.2.3",
     "lodash": "^4.17.21",
     "npm": "^7.24.1",
     "prop-types": "^15.7.2",
@@ -38,7 +40,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
