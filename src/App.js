@@ -1,18 +1,22 @@
-import React, {useEffect} from 'react'
+import React, {Suspense, lazy, useEffect} from 'react'
 import './App.css';
 import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Route, Switch, withRouter} from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
-import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
-import ProfileContainer from "./component/Profile/ProfileContainer";
 import HeaderContainer from "./component/Header/HeaderContainer";
-import LoginPage from "./component/Login/Login";
+//import ProfileContainer from "./component/Profile/ProfileContainer";
+// import DialogsContainer from "./component/Dialogs/DialogsContainer";
+// import LoginPage from "./component/Login/Login";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializedApp} from "./redux/app.reducer";
 import Preloader from "./component/common/Preloader/Preloader";
+
+const DialogsContainer = lazy(() => import('./component/Dialogs/DialogsContainer'));
+const ProfileContainer = lazy(() => import('./component/Profile/ProfileContainer'));
+const LoginPage = lazy(() => import('./component/Login/Login'));
 
 const App = (props) => {
     useEffect(() => {
@@ -31,19 +35,22 @@ const App = (props) => {
                     <Navbar/>
                 </div>
                 <div className="col-10">
-                    <Switch>
-                        <Route path={"/profile/:userId?"} component={() =>
-                            <ProfileContainer/>}
-                        />
-                        <Route path={"/dialogs"} component={() =>
-                            <DialogsContainer/>}
-                        />
-                        <Route path={"/users"}
-                               component={() => <UsersContainer/>}/>
-                        <Route path={"/login"}
-                               component={() => <LoginPage/>}/>
+                    <Suspense fallback={<Preloader/>}>
+                        <Switch>
+                            <Route path={"/profile/:userId?"} component={() =>
+                                <ProfileContainer/>}
+                            />
 
-                    </Switch>
+                            <Route path={"/dialogs"} component={() =>
+                                <DialogsContainer/>}
+                            />
+                            <Route path={"/users"}
+                                   component={() => <UsersContainer/>}/>
+                            <Route path={"/login"}
+                                   component={() => <LoginPage/>}/>
+
+                        </Switch>
+                    </Suspense>
                 </div>
             </div>
         </div>
