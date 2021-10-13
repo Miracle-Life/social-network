@@ -11,8 +11,13 @@ import youtube from "../../../assets/icon-social/youtube.png"
 import github from "../../../assets/icon-social/github.png"
 import ProfileStatus from './ProfileStatus'
 
-const ProfileInfo = ({profile, updateUserStatus, status}) => {
+const ProfileInfo = ({profile, updateUserStatus,savePhoto, isOwner, status,...props}) => {
 
+
+    const onMainNewPhoto=(e)=>{
+        console.log(e.target.files[0])
+        savePhoto(e.target.files[0])
+    }
     return (
         <>
             {!profile ?
@@ -20,13 +25,17 @@ const ProfileInfo = ({profile, updateUserStatus, status}) => {
                 :
                 <div className="row">
                     <div className="col-5">
-                        <div className="card">
-                            <img src={profile.photos.large !== null ? profile.photos.large : img}
+                        <div className="card w-75">
+                            <img src={profile.photos.large || img}
                                  className="card-img-top" alt="..."/>
+                            {isOwner ||
+                            <div className="mb-3 mt-3">
+                                <input className="form-control btn-success" onChange={onMainNewPhoto} type="file"/>
+                            </div>
+                            }
                             <div className="card-body">
                                 <h5 className="card-title"> {profile.fullName}</h5>
                             </div>
-
                         </div>
                     </div>
                     <div className="col-7">
