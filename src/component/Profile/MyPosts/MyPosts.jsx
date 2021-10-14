@@ -12,7 +12,7 @@ const MyPosts = (props) => {
     const addNewPost = (value) => {
         props.addPost(value.myNewPost)
     }
-    console.log('render')
+
     return (
         <div>
             My Posts
