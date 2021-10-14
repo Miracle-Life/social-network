@@ -4,10 +4,10 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth.reducer";
 import {Redirect} from "react-router-dom";
 
-const LoginPage = ({login,isAuthenticated}) => {
+const LoginPage = ({login, captchaUrl, isAuthenticated}) => {
 
     const submit = formData => {
-        login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
     if (isAuthenticated) {
         return <Redirect to={'/profile'}/>
@@ -15,11 +15,12 @@ const LoginPage = ({login,isAuthenticated}) => {
     return (
         <div>
             <h1>Login Page</h1>
-            <LoginReduxForm onSubmit={submit}/>
+            <LoginReduxForm captcha={captchaUrl} onSubmit={submit}/>
         </div>
     );
 };
-const mapStateToProps = (state)=>({
+const mapStateToProps = (state) => ({
+    captchaUrl: state.authUser.captchaUrl,
     isAuthenticated: state.authUser.isAuthenticated
 })
 export default connect(mapStateToProps, {login})(LoginPage)
