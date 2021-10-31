@@ -2,7 +2,7 @@ import React, {Suspense, lazy, useEffect} from 'react'
 import './App.css';
 import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
 import UsersContainer from "./component/Users/UsersContainer";
 import HeaderContainer from "./component/Header/HeaderContainer";
@@ -37,10 +37,12 @@ const App = (props) => {
                 <div className="col-10">
                     <Suspense fallback={<Preloader/>}>
                         <Switch>
+                            <Route exact path={"/"} component={() =>
+                                <Redirect to="/profile"/>}
+                            />
                             <Route path={"/profile/:userId?"} component={() =>
                                 <ProfileContainer/>}
                             />
-
                             <Route path={"/dialogs"} component={() =>
                                 <DialogsContainer/>}
                             />
@@ -48,6 +50,8 @@ const App = (props) => {
                                    component={() => <UsersContainer/>}/>
                             <Route path={"/login"}
                                    component={() => <LoginPage/>}/>
+                            <Route path={"*"}
+                                   component={() => <div>404 Not found</div>}/>
 
                         </Switch>
                     </Suspense>
