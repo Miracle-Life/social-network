@@ -2,7 +2,6 @@
   "name": "social-network",
   "version": "0.1.0",
   "author": "Denys Bielov",
-  "homepage": "https://miracle-life.github.io/testing/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
