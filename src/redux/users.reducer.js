@@ -9,7 +9,7 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const TOGGLE_IS_FETCHING = 'users/TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'users/TOGGLE_IS_FOLLOWING_PROGRESS'
 
-let initialState = {
+let initialState: initialStateType = {
     users: [],
     pageSize: 20,
     totalUsersCount: 0,
